@@ -25,8 +25,14 @@ rc-update add sshd default
 
 # Extra stuff
 apk add mtd-utils-ubi
-apk add bottom
-apk add neofetch
+apk add python3 
+apk add py3-pip
+apk add py3-smbus
+apk add libgpiod
+apk add alpine-conf
+apk add git
+apk add zabbix-agent
+apk add nano
 
 # Clear apk cache
 rm -rf /var/cache/apk/*
