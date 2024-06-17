@@ -1,0 +1,25 @@
+#!/bin/sh
+
+INTERFACE="eth0"
+
+if [ "$IFACE" = "$INTERFACE" ]; then
+    SERIAL_NUMBER=$(tr -d '\0' </proc/device-tree/serial-number)
+    MAC_ADDRESS=$(echo -n "$SERIAL_NUMBER" | md5sum | sed 's/^\(..\)\(..\)\(..\)\(..\)\(..\).*$/02:\1:\2:\3:\4:\5/')
+    INTERFACES_FILE="/etc/network/interfaces"
+    LOG_MESSAGE="Setting MAC address $MAC_ADDRESS for interface $INTERFACE"
+
+    HWADDRESS_LINE="    hwaddress $MAC_ADDRESS"
+
+    if grep -q "^iface $INTERFACE " "$INTERFACES_FILE"; then
+        if ! grep -q "hwaddress" "$INTERFACES_FILE"; then
+            sed -i "/^iface $INTERFACE /a$HWADDRESS_LINE" "$INTERFACES_FILE"
+            ifconfig $INTERFACE hw ether $MAC_ADDRESS
+            echo "$LOG_MESSAGE" > /dev/kmsg
+        fi
+    else
+        echo -e "\nauto $INTERFACE\niface $INTERFACE inet dhcp\n$HWADDRESS_LINE" >> "$INTERFACES_FILE"
+        ifconfig $INTERFACE hw ether $MAC_ADDRESS
+        echo "$LOG_MESSAGE" > /dev/kmsg
+    fi
+fi
+  
