@@ -55,7 +55,7 @@ rm -rf output
 mkdir -p output
 mkdir -p output/$DEVICE_NAME
 
-mv sdk/output/image/update.img "output/$DEVICE_NAME-sysupgrade.img"
+cp sdk/output/image/update.img "output/$DEVICE_NAME-sysupgrade.img"
 #cp sdk/output/image/boot.img "output/$DEVICE_NAME/boot.img"
 #cp sdk/output/image/download.bin "output/$DEVICE_NAME/download.bin"
 #cp sdk/output/image/env.img "output/$DEVICE_NAME/env.img"
@@ -67,4 +67,4 @@ mv sdk/output/image/update.img "output/$DEVICE_NAME-sysupgrade.img"
 #cp sdk/output/image/tftp_update.txt "output/$DEVICE_NAME/tftp_update.txt"
 
 cp sdk/output/image/* "output/$DEVICE_NAME/"
-tar -czvf "output/$DEVICE_NAME-firmware.tar.gz" "output/$DEVICE_NAME/"
+tar -czvf "output/$DEVICE_NAME-firmware.tar.gz" output/"$DEVICE_NAME"/
