@@ -33,7 +33,7 @@ docker run \
     --net host \
     --mount type=bind,source=./bootstrap.sh,target=/bootstrap.sh \
     -v "$ROOTFS_WORKSPACE_MNT:/extrootfs" \
-    arm32v7/alpine \
+    arm32v7/alpine:3.19.1 \
     /bootstrap.sh
 
 # Configuring rootfs and overlay
