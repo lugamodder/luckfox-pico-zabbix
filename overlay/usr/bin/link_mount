@@ -8,9 +8,9 @@ ln -sf /dev/mtd0 env
 ln -sf /dev/mtd1 idblock
 ln -sf /dev/mtd2 uboot
 ln -sf /dev/mtd3 boot
-ln -sf /dev/mtd4 oem
-ln -sf /dev/mtd5 userdata
-ln -sf /dev/mtd6 rootfs
+#ln -sf /dev/mtd4 oem
+#ln -sf /dev/mtd5 userdata
+ln -sf /dev/mtd4 rootfs
 fi }
 mount_part(){
 if [ -z "$1" -o -z "$2" -o -z "$3" ];then
