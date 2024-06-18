@@ -12,6 +12,10 @@ jobs:
         run: git config --global --add safe.directory $GITHUB_WORKSPACE
       - name: update submodules
         run: git submodule update --init --recursive
+      - name: update submodules to main branch
+        run: |
+          git submodule sync --recursive
+          git submodule update --remote --merge
       - name: build rootfs
         run: sudo ./rootfs.sh
       - name: upload rootfs
@@ -36,6 +40,10 @@ jobs:
         run: git config --global --add safe.directory $GITHUB_WORKSPACE
       - name: update submodules
         run: git submodule update --init --recursive
+      - name: update submodules to main branch
+        run: |
+          git submodule sync --recursive
+          git submodule update --remote --merge
       - name: download rootfs
         uses: actions/download-artifact@v4
         with:
