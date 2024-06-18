@@ -56,10 +56,10 @@ overlay() {
     "$ROOTFS_WORKSPACE_MNT/etc/ssh/sshd_config"
 
   ln -s "/etc/init.d/00_link_mount" \
-    "$ROOTFS_WORKSPACE_MNT/etc/runlevels/default/00_link_mount"
+    "$ROOTFS_WORKSPACE_MNTetc/runlevels/default/00_link_mount"
 
   ln -s "/etc/init.d/10_usb_gadget" \
-    "$ROOTFS_WORKSPACE_MNT/etc/runlevels/default/10_usb_gadget"
+    "$ROOTFS_WORKSPACE_MNTetc/runlevels/default/10_usb_gadget"
 }
 
 overlay
