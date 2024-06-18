@@ -69,4 +69,4 @@ ls -l sdk/output/image/
 #cp sdk/output/image/tftp_update.txt "output/$DEVICE_NAME/tftp_update.txt"
 
 cp sdk/output/image/* "output/$DEVICE_NAME/"
-tar -czvf "output/$DEVICE_NAME-firmware.tar.gz" output/"$DEVICE_NAME"/
+#tar -czvf "output/$DEVICE_NAME-firmware.tar.gz" output/"$DEVICE_NAME"/
