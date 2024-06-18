@@ -2,6 +2,8 @@
 
 # Install base
 apk update
+apk upgrade
+
 apk add openrc
 rc-update add devfs boot
 rc-update add procfs boot
@@ -35,6 +37,7 @@ apk add alpine-conf
 apk add git
 apk add zabbix-agent
 apk add nano
+apk add mc
 
 # Clear apk cache
 rm -rf /var/cache/apk/*
