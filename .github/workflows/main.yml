@@ -10,12 +10,16 @@ jobs:
         uses: actions/checkout@v4
       - name: configure safe directory
         run: git config --global --add safe.directory $GITHUB_WORKSPACE
-      - name: update submodules
-        run: git submodule update --init --recursive
+      - name: stash local changes in submodules
+        run: |
+          git submodule foreach --recursive 'git stash'
       - name: update submodules to main branch
         run: |
           git submodule sync --recursive
           git submodule update --remote --merge
+      - name: apply stashed changes in submodules
+        run: |
+          git submodule foreach --recursive 'git stash pop || true'
       - name: build rootfs
         run: sudo ./rootfs.sh
       - name: upload rootfs
@@ -38,12 +42,16 @@ jobs:
           submodules: "recursive"
       - name: configure safe directory
         run: git config --global --add safe.directory $GITHUB_WORKSPACE
-      - name: update submodules
-        run: git submodule update --init --recursive
+      - name: stash local changes in submodules
+        run: |
+          git submodule foreach --recursive 'git stash'
       - name: update submodules to main branch
         run: |
           git submodule sync --recursive
           git submodule update --remote --merge
+      - name: apply stashed changes in submodules
+        run: |
+          git submodule foreach --recursive 'git stash pop || true'
       - name: download rootfs
         uses: actions/download-artifact@v4
         with:
