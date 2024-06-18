@@ -14,6 +14,7 @@ rootfs_workspace_new() {
   mkdir -p "$ROOTFS_WORKSPACE_MNT"
   dd if=/dev/zero of="$ROOTFS_WORKSPACE_FILE" bs=1M count=200
   mkfs.ext4 "$ROOTFS_WORKSPACE_FILE"
+  echo "Mount $ROOTFS_WORKSPACE_FILE on $ROOTFS_WORKSPACE_MNT"
   mount "$ROOTFS_WORKSPACE_FILE" "$ROOTFS_WORKSPACE_MNT"
 }
 
@@ -28,6 +29,7 @@ docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
 docker container rm -f armv7alpine
 docker run \
     --name armv7alpine \
+    --platform linux/arm/v7 \
     --net host \
     --mount type=bind,source=./bootstrap.sh,target=/bootstrap.sh \
     -v "$ROOTFS_WORKSPACE_MNT:/extrootfs" \
