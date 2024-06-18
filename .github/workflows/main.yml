@@ -49,8 +49,8 @@ jobs:
         with:
           name: ${{ matrix.device }}-sysupgrade
           path: output/${{ matrix.device }}-sysupgrade.img
-      - name: upload firmware.tar.gz
+      - name: upload firmware
         uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.device }}-firmware
-          path: output/${{ matrix.device }}-firmware.tar.gz
+          path: output/${{ matrix.device }}/
