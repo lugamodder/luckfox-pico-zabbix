@@ -61,7 +61,8 @@ overlay() {
   ln -s "/etc/init.d/10_usb_gadget" \
     "$ROOTFS_WORKSPACE_MNT/etc/runlevels/default/10_usb_gadget"
 
-  chmod +x  "$ROOTFS_WORKSPACE_MNT/etc/network/if-pre-up.d/update_mac" 
+  chmod +x "$ROOTFS_WORKSPACE_MNT/etc/network/if-pre-up.d/update_mac"
+  
 }
 
 overlay
