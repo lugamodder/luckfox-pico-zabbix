@@ -2,22 +2,14 @@ name: CI
 on:
   workflow_dispatch:
 jobs:
-  submodule-update:
-    runs-on: [self-hosted, linux, x64, e5]
-    steps:
-      - name: run action
-        id: run_action
-        uses: PaulRitter/github-action-create-commit-parent-submodule@v2.0
-        with:
-          github_token: ${{ secrets.GH_ACTIONS_TOKEN }}
-          parent_repository: lugamodder/luckfox-pico
-          parent_branch: main
   build-rootfs:
     runs-on: [self-hosted, linux, x64, e5]
     #runs-on: ubuntu-24.04
     steps:
       - name: checkout
         uses: actions/checkout@v4
+      - name: update submodules
+        run: git submodule update --init --recursive
       - name: build rootfs
         run: sudo ./rootfs.sh
       - name: upload rootfs
@@ -38,6 +30,8 @@ jobs:
         uses: actions/checkout@v4
         with:
           submodules: "recursive"
+      - name: update submodules
+        run: git submodule update --init --recursive
       - name: download rootfs
         uses: actions/download-artifact@v4
         with:
