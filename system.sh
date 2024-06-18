@@ -66,5 +66,5 @@ mv sdk/output/image/update.img "output/$DEVICE_NAME-sysupgrade.img"
 #cp sdk/output/image/sd_update.txt "output/$DEVICE_NAME/sd_update.txt"
 #cp sdk/output/image/tftp_update.txt "output/$DEVICE_NAME/tftp_update.txt"
 
-cp sdk/output/image/* output/"$DEVICE_NAME"/
-tar -czvf "output/$DEVICE_NAME"-firmware.tar.gz" "output/$DEVICE_NAME/"
+cp sdk/output/image/* "output/$DEVICE_NAME/"
+tar -czvf "output/$DEVICE_NAME-firmware.tar.gz" "output/$DEVICE_NAME/"
