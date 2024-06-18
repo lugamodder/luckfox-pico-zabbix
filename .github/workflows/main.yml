@@ -2,6 +2,16 @@ name: ci
 on:
   workflow_dispatch:
 jobs:
+  submodule-update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: run action
+        id: run_action
+        uses: PaulRitter/github-action-create-commit-parent-submodule@v1
+        with:
+          github_token: ${{ secrets.GH_ACTIONS_TOKEN }}
+          parent_repository: lugamodder/luckfox-pico
+          parent_branch: main
   build-rootfs:
     runs-on: [self-hosted, linux, x64, e5]
     #runs-on: ubuntu-24.04
