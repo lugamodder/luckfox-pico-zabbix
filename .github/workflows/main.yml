@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
 jobs:
   build-rootfs:
-    runs-on: self-hosted
+    runs-on: [self-hosted, linux, x64, N305]
     #runs-on: ubuntu-latest
     steps:
       - name: checkout
@@ -20,7 +20,7 @@ jobs:
       matrix:
         device: [ pico-pro-max ]
     # runs-on: "cirun-aws-amd64--${{ github.run_id }}"
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux, x64, N305]
     needs: build-rootfs
     steps:
       - name: checkout
