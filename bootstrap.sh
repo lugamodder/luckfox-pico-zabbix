@@ -38,6 +38,7 @@ apk add git
 apk add zabbix-agent
 apk add nano
 apk add mc
+apk add tzdata && cp /usr/share/zoneinfo/Europe/Kyiv /etc/localtime && echo "Europe/Kyiv" > /etc/timezone && apk del tzdata
 
 # Clear apk cache
 rm -rf /var/cache/apk/*
