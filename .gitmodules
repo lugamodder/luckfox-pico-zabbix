@@ -1,3 +1,4 @@
 [submodule "sdk"]
 	path = sdk
 	url = https://github.com/lugamodder/luckfox-pico-sdk.git
+	branch = main
