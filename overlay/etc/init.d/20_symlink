@@ -1,3 +1,12 @@
 #!/sbin/openrc-run
 
-command="ln -s /run /var/run"
+name="20_symlink"
+description="Create symlink /var/run -> /run"
+
+depend() {
+    after 00_link_mount
+}
+
+start() {
+    ln -s /run /var/run
+}
