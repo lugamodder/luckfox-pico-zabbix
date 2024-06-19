@@ -51,7 +51,11 @@ overlay() {
   sed -i -e "s/{TTY_PORT}/$TTY_PORT/g" "$OVERLAY_WORKSPACE/etc/securetty"
   sed -i -e "s/{TTY_PORT}/$TTY_PORT/g" "$OVERLAY_WORKSPACE/etc/inittab"
 
+  echo "Overlay workspace content:"
+  ls -l "$OVERLAY_WORKSPACE"
   rsync -a "$OVERLAY_WORKSPACE/" "$ROOTFS_WORKSPACE_MNT/"
+  echo "ROOTFS_WORKSPACE_MNT content:"
+  ls -l "$ROOTFS_WORKSPACE_MNT"
   rm -rf "$OVERLAY_WORKSPACE"
 
   echo "Include /etc/ssh/sshd_config.d/*.conf" >> \
@@ -78,7 +82,6 @@ popd || exit
 rm -rf "$OUTPUT_DIR"
 mkdir -p "$OUTPUT_DIR"
 mv "$ROOTFS_WORKSPACE_MNT/$ROOTFS_FILE" "$OUTPUT_DIR/"
-ls -l "$OUTPUT_DIR/"
 
 # Cleanup
 rootfs_workspace_drop
