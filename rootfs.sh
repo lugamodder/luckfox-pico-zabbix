@@ -22,6 +22,7 @@ rootfs_workspace_new() {
 rootfs_workspace_drop
 rootfs_workspace_new
 
+cat /etc/fstab
 # Setting up multiarch support
 docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
 
