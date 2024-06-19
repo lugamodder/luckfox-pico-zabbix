@@ -63,7 +63,7 @@ overlay() {
     "$ROOTFS_WORKSPACE_MNT/etc/runlevels/default/10_usb_gadget"
 
   chmod +x "$ROOTFS_WORKSPACE_MNT/etc/network/if-pre-up.d/update_mac"
-  
+  ln -s /run /var/run
 }
 
 overlay
