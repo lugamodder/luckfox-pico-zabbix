@@ -13,6 +13,7 @@ rc-update add local default
 
 # Install TTY
 apk add agetty
+apk add bash
 
 # Setting up shell
 apk add shadow
