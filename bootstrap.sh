@@ -18,7 +18,9 @@ apk add agetty
 apk add shadow
 apk add bash bash-completion
 chsh -s /bin/bash
+ln -s /run /var/run
 echo -e "luckfox\nluckfox" | passwd
+sudo sed -i 's:/bin/ash:/bin/bash:' /etc/passwd
 apk del -r shadow
 
 # Install SSH
@@ -35,6 +37,7 @@ apk add libgpiod
 apk add alpine-conf
 apk add git
 apk add zabbix-agent
+apk add zabbix-agent-openrc
 apk add nano
 apk add mc
 #apk add tzdata && cp /usr/share/zoneinfo/Europe/Kyiv /etc/localtime && echo "Europe/Kyiv" > /etc/timezone && apk del tzdata
@@ -65,4 +68,4 @@ rm -rf /var/cache/apk/*
 ls -l /extrootfs/
 # Packaging rootfs
 for d in bin etc lib sbin usr; do tar c "$d" | tar x -C /extrootfs; done
-for dir in dev proc root run sys var oem userdata; do mkdir /extrootfs/${dir}; done
+for dir in dev proc root run sys var; do mkdir /extrootfs/${dir}; done
