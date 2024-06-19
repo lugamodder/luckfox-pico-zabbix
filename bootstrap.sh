@@ -18,7 +18,7 @@ apk add bash
 # Setting up shell
 apk add shadow
 chsh -s /bin/bash
-ln -s /run /var/run
+
 echo -e "luckfox\nluckfox" | passwd
 sed -i 's:/bin/ash:/bin/bash:' /etc/passwd
 apk del -r shadow
