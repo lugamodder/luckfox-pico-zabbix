@@ -25,7 +25,7 @@ rootfs_workspace_new
 docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
 
 # Create docker
-DOCKER_CONTAINER="arm32v7/alpine"
+DOCKER_CONTAINER="arm32v7/alpine:edge"
 docker container rm -f armv7alpine
 
 docker run \
