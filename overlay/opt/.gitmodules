@@ -1,0 +1,4 @@
+[submodule "zabbix_ina226"]
+	path = zabbix_ina226
+	url = https://github.com/lugamodder/zabbix_ina226.git
+	branch = main
