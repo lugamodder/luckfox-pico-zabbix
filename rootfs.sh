@@ -25,7 +25,7 @@ rootfs_workspace_new
 docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
 
 # Create docker
-DOCKER_CONTAINER="arm32v7/alpine:3.18.6"
+DOCKER_CONTAINER="arm32v7/alpine:3.19.1"
 docker container rm -f armv7alpine
 
 docker run \
@@ -50,11 +50,7 @@ overlay() {
   sed -i -e "s/{TTY_PORT}/$TTY_PORT/g" "$OVERLAY_WORKSPACE/etc/securetty"
   sed -i -e "s/{TTY_PORT}/$TTY_PORT/g" "$OVERLAY_WORKSPACE/etc/inittab"
 
-  echo "Overlay workspace content:"
-  ls -l "$OVERLAY_WORKSPACE"
   rsync -a "$OVERLAY_WORKSPACE/" "$ROOTFS_WORKSPACE_MNT/"
-  echo "ROOTFS_WORKSPACE_MNT content:"
-  ls -l "$ROOTFS_WORKSPACE_MNT"
   rm -rf "$OVERLAY_WORKSPACE"
 
   echo "Include /etc/ssh/sshd_config.d/*.conf" >> \
@@ -73,7 +69,6 @@ overlay() {
 overlay
 
 # Packaging
-ls -l "$ROOTFS_WORKSPACE_MNT"
 pushd "$ROOTFS_WORKSPACE_MNT" || exit
 tar czf "$ROOTFS_FILE" ./*
 popd || exit
