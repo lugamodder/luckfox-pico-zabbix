@@ -70,6 +70,7 @@ overlay() {
 overlay
 
 # Packaging
+ls -l "$ROOTFS_WORKSPACE_MNT"
 pushd "$ROOTFS_WORKSPACE_MNT" || exit
 tar czf "$ROOTFS_FILE" ./*
 popd || exit
@@ -77,6 +78,7 @@ popd || exit
 rm -rf "$OUTPUT_DIR"
 mkdir -p "$OUTPUT_DIR"
 mv "$ROOTFS_WORKSPACE_MNT/$ROOTFS_FILE" "$OUTPUT_DIR/"
+ls -l "$OUTPUT_DIR/"
 
 # Cleanup
 rootfs_workspace_drop
