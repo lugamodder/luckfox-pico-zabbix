@@ -33,19 +33,21 @@ rc-update add sshd default
 
 # Extra stuff
 apk add mtd-utils-ubi
+apk add util-linux
+apk add iperf3
 apk add ca-certificates-bundle
 apk add python3 
 apk add py3-pip
 apk add py3-smbus
 apk add libgpiod
 apk add alpine-conf
-apk add git
+apk add chrony
 apk add zabbix-agent
 apk add zabbix-agent-openrc
+rc-update add zabbix-agentd default
 apk add nano
 apk add mc
-apk add chrony
-#apk add tzdata && cp /usr/share/zoneinfo/Europe/Kyiv /etc/localtime && echo "Europe/Kyiv" > /etc/timezone && apk del tzdata
+
 
 setup-ntp chrony
 setup-timezone -z Europe/Kyiv
