@@ -20,7 +20,7 @@ apk add bash bash-completion
 chsh -s /bin/bash
 ln -s /run /var/run
 echo -e "luckfox\nluckfox" | passwd
-sudo sed -i 's:/bin/ash:/bin/bash:' /etc/passwd
+sed -i 's:/bin/ash:/bin/bash:' /etc/passwd
 apk del -r shadow
 
 # Install SSH
