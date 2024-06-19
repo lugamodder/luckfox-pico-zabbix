@@ -61,6 +61,9 @@ overlay() {
 
   ln -s "/etc/init.d/10_usb_gadget" \
     "$ROOTFS_WORKSPACE_MNT/etc/runlevels/default/10_usb_gadget"
+    
+  ln -s "/etc/init.d/20_symlink" \
+    "$ROOTFS_WORKSPACE_MNT/etc/runlevels/boot/20_symlink"
 
   chmod +x "$ROOTFS_WORKSPACE_MNT/etc/network/if-pre-up.d/update_mac"
   ln -s /run /var/run
