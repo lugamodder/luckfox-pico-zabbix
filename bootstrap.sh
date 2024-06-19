@@ -43,6 +43,7 @@ apk add tzdata && cp /usr/share/zoneinfo/Europe/Kyiv /etc/localtime && echo "Eur
 # Clear apk cache
 rm -rf /var/cache/apk/*
 
+ls -l /extrootfs/
 # Packaging rootfs
 for d in bin etc lib sbin usr; do tar c "$d" | tar x -C /extrootfs; done
 for dir in dev proc root run sys var oem userdata; do mkdir /extrootfs/${dir}; done
