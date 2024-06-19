@@ -28,7 +28,6 @@ rc-update add sshd default
 # Extra stuff
 apk add mtd-utils-ubi
 apk add ca-certificates-bundle
-apk add chrony
 apk add python3 
 apk add py3-pip
 apk add py3-smbus
