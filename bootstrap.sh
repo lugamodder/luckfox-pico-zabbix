@@ -1,5 +1,8 @@
 #!/bin/sh
 
+mkdir /tmp
+mount -t tmpfs -o mode=1777 tmpfs /tmp
+
 # Install base
 apk update
 apk upgrade
@@ -52,4 +55,4 @@ rm -rf /var/cache/apk/*
 ls -l /extrootfs/
 # Packaging rootfs
 for d in bin etc lib sbin usr; do tar c "$d" | tar x -C /extrootfs; done
-for dir in dev proc root run sys var; do mkdir /extrootfs/${dir}; done
+for dir in dev proc root run sys var tmp; do mkdir /extrootfs/${dir}; done
