@@ -57,5 +57,5 @@ rm -rf /var/cache/apk/*
 
 ls -l /extrootfs/
 # Packaging rootfs
-for d in bin etc lib sbin usr; do tar c "$d" | tar x -C /extrootfs; done
-for dir in dev proc root run sys var tmp; do mkdir /extrootfs/${dir}; done
+for d in bin etc lib sbin usr opt var; do tar c "$d" | tar x -C /extrootfs; done
+for dir in dev proc root run sys tmp; do mkdir /extrootfs/${dir}; done
