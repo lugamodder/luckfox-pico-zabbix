@@ -41,7 +41,7 @@ docker run \
 overlay() {
   local OVERLAY_WORKSPACE="overlay-workspace"
   rm -rf "$OVERLAY_WORKSPACE"
-  cp -R overlay "$OVERLAY_WORKSPACE"
+  cp -R --preserve=links overlay "$OVERLAY_WORKSPACE"
 
   HOSTNAME="luckfox"
   sed -i -e "s/{HOSTNAME}/$HOSTNAME/g" "$OVERLAY_WORKSPACE/etc/hostname"
@@ -50,7 +50,7 @@ overlay() {
   sed -i -e "s/{TTY_PORT}/$TTY_PORT/g" "$OVERLAY_WORKSPACE/etc/securetty"
   sed -i -e "s/{TTY_PORT}/$TTY_PORT/g" "$OVERLAY_WORKSPACE/etc/inittab"
 
-  rsync -a "$OVERLAY_WORKSPACE/" "$ROOTFS_WORKSPACE_MNT/"
+  rsync -aL "$OVERLAY_WORKSPACE/" "$ROOTFS_WORKSPACE_MNT/"
   rm -rf "$OVERLAY_WORKSPACE"
 
   echo "Include /etc/ssh/sshd_config.d/*.conf" >> \
