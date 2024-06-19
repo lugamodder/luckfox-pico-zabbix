@@ -21,20 +21,13 @@ rootfs_workspace_new() {
 # Create and mount rootfs
 rootfs_workspace_drop
 rootfs_workspace_new
-echo"#####################################"
-cat /etc/fstab
-echo"#####################################"
-mount
-echo"#####################################"
-df -h
-echo"#####################################"
 # Setting up multiarch support
 docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
 
 # Create docker
 DOCKER_CONTAINER="arm32v7/alpine:3.18.6"
 docker container rm -f armv7alpine
-docker pull $DOCKER_CONTAINER
+
 docker run \
     --name armv7alpine \
     --platform linux/arm/v7 \
