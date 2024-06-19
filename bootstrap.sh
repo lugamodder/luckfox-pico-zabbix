@@ -38,9 +38,26 @@ apk add zabbix-agent
 apk add nano
 apk add mc
 #apk add tzdata && cp /usr/share/zoneinfo/Europe/Kyiv /etc/localtime && echo "Europe/Kyiv" > /etc/timezone && apk del tzdata
-setup-timezone -z Europe/Kyiv
+
+
+cat << EOF > /etc/init.d/ntpd
+#!/sbin/openrc-run
+
+name="busybox $SVCNAME"
+command="/usr/sbin/$SVCNAME"
+command_args="${NTPD_OPTS:--N -p pool.ntp.org}"
+pidfile="/run/$SVCNAME.pid"
+
+depend() {
+    need net
+    provide ntp-client
+    use dns
+}
+EOF
+
 chmod +x /etc/init.d/ntpd
 setup-ntp busybox
+setup-timezone -z Europe/Kyiv
 
 # Clear apk cache
 rm -rf /var/cache/apk/*
