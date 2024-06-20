@@ -24,6 +24,7 @@ sudo ./upgrade_tool uf pico-pro-max-sysupgrade.img
 
 ## Setting Up
 
+SSH enabled.
 The default username/password is `root:luckfox`.
 
 UART serial debug port is enabled,
