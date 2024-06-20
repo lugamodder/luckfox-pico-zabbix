@@ -2,3 +2,6 @@
 	path = sdk
 	url = https://github.com/lugamodder/luckfox-pico-sdk.git
 	branch = main
+[submodule "overlay/opt/zabbix_ina226"]
+	path = overlay/opt/zabbix_ina226
+	url = https://github.com/lugamodder/zabbix_ina226.git
