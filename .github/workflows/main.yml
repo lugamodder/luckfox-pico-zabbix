@@ -12,8 +12,11 @@ jobs:
           rm -rf ./* || true
           rm -rf ./.??* || true
           ls -la ./
-      - name: checkout
+      - name: checkout repo
         uses: actions/checkout@v4
+      - name: checkout specific submodule zabbix_ina226
+        run: |
+          git submodule update --init --recursive -- zabbix_ina226
       - name: build rootfs
         run: sudo ./rootfs.sh
       - name: upload rootfs
