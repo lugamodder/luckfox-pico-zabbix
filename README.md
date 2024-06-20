@@ -1,7 +1,7 @@
 # luckfox-pico
 
 Linux system based on Alpine for Luckfox Pico Pro Max (SPI flash).
-Added [zabbix_ina226] (https://github.com/lugamodder/zabbix_ina226) scripts and zabbix-agent.
+Added [zabbix_ina226](https://github.com/lugamodder/zabbix_ina226) scripts and zabbix-agent.
 It is assumed that INA226 module (with shunt 0.002 ohm) connected on I2C-3, and AC-loss sensor connected on GPIO2_A2.
 
 ## Downloads
