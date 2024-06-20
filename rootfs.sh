@@ -61,10 +61,7 @@ overlay() {
 
   ln -s "/etc/init.d/10_usb_gadget" \
     "$ROOTFS_WORKSPACE_MNT/etc/runlevels/default/10_usb_gadget"
-    
- # ln -s "/etc/init.d/20_symlink" \
- #   "$ROOTFS_WORKSPACE_MNT/etc/runlevels/boot/20_symlink"
-    
+      
   ln -s "$ROOTFS_WORKSPACE_MNT/run/" "$ROOTFS_WORKSPACE_MNT/var/run/"
   
 }
