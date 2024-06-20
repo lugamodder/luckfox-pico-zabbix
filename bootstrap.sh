@@ -34,6 +34,7 @@ rc-update add sshd default
 # Extra stuff
 apk add mtd-utils-ubi
 apk add util-linux
+apk add ncurses
 apk add iperf3
 apk add ca-certificates-bundle
 apk add python3 
