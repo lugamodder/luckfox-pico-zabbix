@@ -1,0 +1,12 @@
+#!/sbin/openrc-run
+
+depend() {
+    after modules
+}
+
+start() {
+    ebegin "Setting permissions for I2C and GPIO devices"
+    chmod 666 /dev/i2c-*
+    chmod 666 /dev/gpio*
+    eend $?
+}

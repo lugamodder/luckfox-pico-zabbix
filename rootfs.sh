@@ -61,8 +61,11 @@ overlay() {
 
   ln -s "/etc/init.d/10_usb_gadget" \
     "$ROOTFS_WORKSPACE_MNT/etc/runlevels/default/10_usb_gadget"
-      
-  ln -s "$ROOTFS_WORKSPACE_MNT/run/" "$ROOTFS_WORKSPACE_MNT/var/run/"
+
+  ln -s "/etc/init.d/set_permissions" \
+    "$ROOTFS_WORKSPACE_MNT/etc/runlevels/default/set_permissions"
+
+   ln -s "$ROOTFS_WORKSPACE_MNT/run/" "$ROOTFS_WORKSPACE_MNT/var/run/"
   
 }
 
