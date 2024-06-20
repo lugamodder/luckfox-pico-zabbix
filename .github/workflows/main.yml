@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@v4
       - name: checkout specific submodule zabbix_ina226
         run: |
-          git submodule update --init --recursive -- zabbix_ina226
+          git submodule update --init --recursive -- /overlay/opt/zabbix_ina226
       - name: build rootfs
         run: sudo ./rootfs.sh
       - name: upload rootfs
