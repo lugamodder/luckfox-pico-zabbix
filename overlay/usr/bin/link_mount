@@ -155,7 +155,7 @@ fi
 }
 case $1 in start) linkdev;
 mount_part rootfs IGNORE ubifs ;
-mount_part oem /oem ubifs ;
-mount_part userdata /userdata ubifs ;
+#mount_part oem /oem ubifs ;
+#mount_part userdata /userdata ubifs ;
 ;; linkdev) linkdev ;
 ;; stop) printf stop $0 finished\n ;; *) echo Usage: $0 {start|stop} exit 1 ;; esac
