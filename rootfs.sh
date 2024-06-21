@@ -67,6 +67,9 @@ overlay() {
 
   ln -s "/etc/init.d/update_mac" \
     "$ROOTFS_WORKSPACE_MNT/etc/runlevels/default/update_mac"
+    
+  ln -s "$ROOTFS_WORKSPACE_MNT/etc/runlevels/boot/devfs" \
+    "$ROOTFS_WORKSPACE_MNT/etc/runlevels/boot/dev"
 
    ln -s "$ROOTFS_WORKSPACE_MNT/run/" "$ROOTFS_WORKSPACE_MNT/var/run/"
   
