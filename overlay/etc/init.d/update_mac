@@ -2,7 +2,7 @@
 
 depend() {
     after networking
-    before dhcpcd
+    before dhcpd
 }
 
 INTERFACE="eth0"
@@ -21,11 +21,13 @@ start() {
             if ! grep -q "hwaddress" "$INTERFACES_FILE"; then
                 sed -i "/^iface $INTERFACE /a$HWADDRESS_LINE" "$INTERFACES_FILE"
                 ifconfig $INTERFACE hw ether $MAC_ADDRESS
+                rc-service networking restart
                 echo "$LOG_MESSAGE" > /dev/kmsg
             fi
         else
             echo -e "\nauto $INTERFACE\niface $INTERFACE inet dhcp\n$HWADDRESS_LINE" >> "$INTERFACES_FILE"
             ifconfig $INTERFACE hw ether $MAC_ADDRESS
+            rc-service networking restart
             echo "$LOG_MESSAGE" > /dev/kmsg
         fi
    
