@@ -49,7 +49,7 @@ rc-update add zabbix-agentd default
 apk add nano
 apk add mc
 
-apk add dhcpd
+apk add dhcp
 rc-update add dhcpd
 
 setup-ntp chrony
