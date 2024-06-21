@@ -1,0 +1,40 @@
+#!/bin/bash
+
+upSeconds="$(/usr/bin/cut -d. -f1 /proc/uptime)"
+secs=$((${upSeconds}%60))
+mins=$((${upSeconds}/60%60))
+hours=$((${upSeconds}/3600%24))
+days=$((${upSeconds}/86400))
+MODEL=$(tr -d '\0' < /proc/device-tree/model)
+SERIAL=$(tr -d '\0' < /proc/device-tree/serial-number)
+SYSTEM=`echo $(grep '^PRETTY_NAME' /etc/os-release | cut -d '=' -f2 | tr -d '"')`
+VERS=`echo $(grep '^VERSION_ID' /etc/os-release | cut -d '=' -f2 | tr -d '"')`
+UPTIME=`printf "%d days, %02dh%02dm%02ds" "$days" "$hours" "$mins" "$secs"`
+MEMORY=`free -h | grep Mem | awk '{print  $4" Free / " $3" Used / " $2 " Total"}'`
+DISK=`df -h / | grep '/' | awk '{print $4" Free / " $3" Used / " $2" Total"}'`
+
+y=`tput setaf 3`
+b=`tput bold`
+cb=`tput sgr0`
+wn=`tput setaf 7`
+x=`tput setaf 2`
+end=`tput sgr0`
+
+read one five fifteen rest < /proc/loadavg
+ 
+echo "$y $b
+      x            x       
+   xxxxxxx      xxxxxx     $x`date +"%A, %e %B %Y, %H:%M:%S"`$y $b
+   xxxxxxxxx xxxxxxxxxx   
+   xxxx xxxxxxxxx xxxxx   $cb$wn Model:  $wn$b$MODEL$cb s/n:$b $SERIAL $y $b
+   xxxxx   xxxx   xxxxx   $cb$wn System: $wn$b$SYSTEM $VERS $y $b
+   xxxxxxxx    xxxxxxxx   $cb$wn Kernel: $wn$b`echo "$(uname -mr)$"`$y $b
+  xxxxxxxxxxxxxxxxxxxxxx  
+ xxxxxx xxxxxxxxxx xxxxxx $cb$wn IP Address:$wn $b `ip a | grep glo | awk '{print $2}' | head -1 | cut -f1 -d/`$y $b
+xxxxxx     xxxx     xxxxxx
+ xxxxxxxxx      xxxxxxxxx $cb$wn Uptime: $wn$b$UPTIME $y $b
+    xxxxxxx    xxxxxxx    $cb$wn Load:   $wn$b${one}, ${five}, ${fifteen} (1, 5, 15 min)$y $b
+        xxxxxxxxxx        $cb$wn Memory: $wn$b$MEMORY $y
+         xxxxxxxx         $cb$wn Disk:  $wn$b$DISK $y $b
+           xxxx
+$end"

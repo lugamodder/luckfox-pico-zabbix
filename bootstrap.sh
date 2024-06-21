@@ -49,9 +49,12 @@ rc-update add zabbix-agentd default
 apk add nano
 apk add mc
 
+apk add dhcpd
+rc-update add dhcpd
 
 setup-ntp chrony
 setup-timezone -z Europe/Kyiv
+
 
 # Clear apk cache
 rm -rf /var/cache/apk/*
