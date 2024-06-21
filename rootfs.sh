@@ -70,7 +70,9 @@ overlay() {
     
   ln -s "$ROOTFS_WORKSPACE_MNT/etc/runlevels/boot/devfs" \
     "$ROOTFS_WORKSPACE_MNT/etc/runlevels/boot/dev"
-
+     
+  ln -s "/etc/init.d/devfs" "/etc/init.d/dev"
+  
    ln -s "$ROOTFS_WORKSPACE_MNT/run/" "$ROOTFS_WORKSPACE_MNT/var/run/"
   
 }
