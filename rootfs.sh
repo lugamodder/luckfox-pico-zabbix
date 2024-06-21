@@ -65,6 +65,9 @@ overlay() {
   ln -s "/etc/init.d/set_permissions" \
     "$ROOTFS_WORKSPACE_MNT/etc/runlevels/default/set_permissions"
 
+  ln -s "/etc/init.d/update_mac" \
+    "$ROOTFS_WORKSPACE_MNT/etc/runlevels/default/update_mac"
+
    ln -s "$ROOTFS_WORKSPACE_MNT/run/" "$ROOTFS_WORKSPACE_MNT/var/run/"
   
 }
