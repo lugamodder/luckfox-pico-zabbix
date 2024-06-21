@@ -57,6 +57,7 @@ setup-timezone -z Europe/Kyiv
 
 
 # Clear apk cache
+rm /etc/networking/interfaces
 rm -rf /var/cache/apk/*
 
 ls -l /extrootfs/
