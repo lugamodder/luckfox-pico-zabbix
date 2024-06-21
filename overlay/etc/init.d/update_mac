@@ -10,7 +10,6 @@ INTERFACE="eth0"
 start() {
     ebegin "Setting MAC address for $INTERFACE"
 
-    if [ "$IFACE" = "$INTERFACE" ]; then
         SERIAL_NUMBER=$(tr -d '\0' </proc/device-tree/serial-number)
         MAC_ADDRESS=$(echo -n "$SERIAL_NUMBER" | md5sum | sed 's/^\(..\)\(..\)\(..\)\(..\)\(..\).*$/02:\1:\2:\3:\4:\5/')
         INTERFACES_FILE="/etc/network/interfaces"
@@ -29,7 +28,6 @@ start() {
             ifconfig $INTERFACE hw ether $MAC_ADDRESS
             echo "$LOG_MESSAGE" > /dev/kmsg
         fi
-    fi
-
+   
     eend $?
 }
