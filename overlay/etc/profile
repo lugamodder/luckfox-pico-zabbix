@@ -22,6 +22,8 @@ for script in /etc/profile.d/*.sh ; do
     fi
 done
 unset script
+
+run-parts /etc/update-motd.d/
 echo >/etc/motd
-run-parts /etc/update-motd.d > /etc/motd
+
 
