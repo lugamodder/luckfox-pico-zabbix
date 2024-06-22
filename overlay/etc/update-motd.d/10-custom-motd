@@ -13,28 +13,27 @@ UPTIME=`printf "%d days, %02dh%02dm%02ds" "$days" "$hours" "$mins" "$secs"`
 MEMORY=`free -h | grep Mem | awk '{print  $4" Free / " $3" Used / " $2 " Total"}'`
 DISK=`df -h / | grep '/' | awk '{print $4" Free / " $3" Used / " $2" Total"}'`
 
-y=`tput setaf 3`
-b=`tput bold`
-cb=`tput sgr0`
-wn=`tput setaf 7`
-x=`tput setaf 2`
-end=`tput sgr0`
+y='\033[38;5;214;1m'
+wn='\033[0;37m'
+wb='\033[1;37m'
+x='\033[38;5;141;1m'
+end='\033[0m'
 
 read one five fifteen rest < /proc/loadavg
  
-echo "$y $b
+echo -e "$y
       x            x       
-   xxxxxxx      xxxxxx     $x`date +"%A, %e %B %Y, %H:%M:%S"`$y $b
+   xxxxxxx      xxxxxx     $x`date +"%A, %e %B %Y, %H:%M:%S"`$y
    xxxxxxxxx xxxxxxxxxx   
-   xxxx xxxxxxxxx xxxxx   $cb$wn Model:  $wn$b$MODEL$cb s/n:$b $SERIAL $y $b
-   xxxxx   xxxx   xxxxx   $cb$wn System: $wn$b$SYSTEM $VERS $y $b
-   xxxxxxxx    xxxxxxxx   $cb$wn Kernel: $wn$b`echo "$(uname -mr)$"`$y $b
+   xxxx xxxxxxxxx xxxxx   $wn Model:  $wb$MODEL$wn s/n:$wb $SERIAL $y
+   xxxxx   xxxx   xxxxx   $wn System: $wb$SYSTEM $VERS $y
+   xxxxxxxx    xxxxxxxx   $wn Kernel: $wb`echo "$(uname -mr)$"`$y
   xxxxxxxxxxxxxxxxxxxxxx  
- xxxxxx xxxxxxxxxx xxxxxx $cb$wn IP Address:$wn $b `ip a | grep glo | awk '{print $2}' | head -1 | cut -f1 -d/`$y $b
+ xxxxxx xxxxxxxxxx xxxxxx $wn IP Address:$wb `ip a | grep glo | awk '{print $2}' | head -1 | cut -f1 -d/`$y
 xxxxxx     xxxx     xxxxxx
- xxxxxxxxx      xxxxxxxxx $cb$wn Uptime: $wn$b$UPTIME $y $b
-    xxxxxxx    xxxxxxx    $cb$wn Load:   $wn$b${one}, ${five}, ${fifteen} (1, 5, 15 min)$y $b
-        xxxxxxxxxx        $cb$wn Memory: $wn$b$MEMORY $y
-         xxxxxxxx         $cb$wn Disk:  $wn$b$DISK $y $b
+ xxxxxxxxx      xxxxxxxxx $wn Uptime: $wb$UPTIME $y $b
+    xxxxxxx    xxxxxxx    $wn Load:   $wb${one}, ${five}, ${fifteen} (1, 5, 15 min)$y
+        xxxxxxxxxx        $wn Memory: $wb$MEMORY $y
+         xxxxxxxx         $wn Disk:  $wb$DISK $y $b
            xxxx
 $end"
