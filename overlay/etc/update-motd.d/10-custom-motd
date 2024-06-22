@@ -27,7 +27,7 @@ echo -e "$y
    xxxxxxxxx xxxxxxxxxx   
    xxxx xxxxxxxxx xxxxx   $wn Model:  $wb$MODEL$wn s/n:$wb $SERIAL $y
    xxxxx   xxxx   xxxxx   $wn System: $wb$SYSTEM $VERS $y
-   xxxxxxxx    xxxxxxxx   $wn Kernel: $wb`echo "$(uname -mr)$"`$y
+   xxxxxxxx    xxxxxxxx   $wn Kernel: $wb`echo "$(uname -mr)"`$y
   xxxxxxxxxxxxxxxxxxxxxx  
  xxxxxx xxxxxxxxxx xxxxxx $wn IP Address:$wb `ip a | grep glo | awk '{print $2}' | head -1 | cut -f1 -d/`$y
 xxxxxx     xxxx     xxxxxx
