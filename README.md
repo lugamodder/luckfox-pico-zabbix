@@ -1,4 +1,4 @@
-# luckfox-pico
+# luckfox-alpine-ina226
 
 Linux system based on Alpine for Luckfox Pico Pro Max (SPI flash).
 Added [zabbix_ina226](https://github.com/lugamodder/zabbix_ina226) scripts and zabbix-agent.
