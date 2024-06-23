@@ -1,8 +1,13 @@
 #!/sbin/openrc-run
 
 depend() {
-    after networking
+    need devfs
+    need procfs
+    need sysfs
     before dhcpd
+    before networking
+    before sshd
+
 }
 
 INTERFACE="eth0"
@@ -20,14 +25,14 @@ start() {
         if grep -q "^iface $INTERFACE " "$INTERFACES_FILE"; then
             if ! grep -q "hwaddress" "$INTERFACES_FILE"; then
                 sed -i "/^iface $INTERFACE /a$HWADDRESS_LINE" "$INTERFACES_FILE"
-                ifconfig $INTERFACE hw ether $MAC_ADDRESS
-                rc-service networking restart
+                #ifconfig $INTERFACE hw ether $MAC_ADDRESS
+                #rc-service networking restart
                 echo "$LOG_MESSAGE" > /dev/kmsg
             fi
         else
             echo -e "\nauto $INTERFACE\niface $INTERFACE inet dhcp\n$HWADDRESS_LINE" >> "$INTERFACES_FILE"
-            ifconfig $INTERFACE hw ether $MAC_ADDRESS
-            rc-service networking restart
+            #ifconfig $INTERFACE hw ether $MAC_ADDRESS
+            #rc-service networking restart
             echo "$LOG_MESSAGE" > /dev/kmsg
         fi
    
