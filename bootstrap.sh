@@ -46,7 +46,7 @@ apk add chrony
 apk add zabbix-agent
 apk add zabbix-agent-openrc
 rc-update add zabbix-agentd default
-add busybox-extras
+apk add busybox-extras
 
 apk add nano
 apk add mc
