@@ -1,0 +1,17 @@
+#!/sbin/openrc-run
+
+depend() {
+    need net
+}
+
+start() {
+    ebegin "Starting udhcpd"
+    start-stop-daemon --start --exec /usr/sbin/udhcpd -- /etc/udhcpd.conf
+    eend $?
+}
+
+stop() {
+    ebegin "Stopping udhcpd"
+    start-stop-daemon --stop --exec /usr/sbin/udhcpd
+    eend $?
+}

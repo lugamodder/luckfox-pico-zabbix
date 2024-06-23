@@ -4,10 +4,9 @@ depend() {
     need devfs
     need procfs
     need sysfs
-    before dhcpd
+    need localmount
     before networking
     before sshd
-
 }
 
 INTERFACE="eth0"

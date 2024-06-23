@@ -67,7 +67,10 @@ overlay() {
 
   ln -s "/etc/init.d/update_mac" \
     "$ROOTFS_WORKSPACE_MNT/etc/runlevels/sysinit/update_mac"
-    
+
+   ln -s "/etc/init.d/udhcpd" \
+    "$ROOTFS_WORKSPACE_MNT/etc/runlevels/default/udhcpd"
+
   ln -s "/etc/runlevels/boot/devfs" \
     "$ROOTFS_WORKSPACE_MNT/etc/runlevels/boot/dev"
      
