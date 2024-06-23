@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
 jobs:
   build-rootfs:
-    runs-on: [self-hosted, linux, x64, e5]
+    runs-on: [self-hosted, linux, x64]
     #runs-on: ubuntu-24.04
     steps:
       - name: Cleanup build folder
@@ -29,7 +29,7 @@ jobs:
       matrix:
         device: [ pico-pro-max ]
     # runs-on: "cirun-aws-amd64--${{ github.run_id }}"
-    runs-on: [self-hosted, linux, x64, e5]
+    runs-on: [self-hosted, linux, x64]
     #runs-on: ubuntu-24.04
     needs: build-rootfs
     steps:
