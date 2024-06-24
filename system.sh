@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ROOTFS_NAME="rootfs-alpine.tar.gz"
-DEVICE_NAME="pico-pro-max"
+#DEVICE_NAME="pico-pro-max"
 
 while getopts ":f:d:" opt; do
   case ${opt} in
@@ -14,7 +14,7 @@ while getopts ":f:d:" opt; do
   esac
 done
 
-DEVICE_ID="8"
+#DEVICE_ID="8"
 case $DEVICE_NAME in
   pico-mini-b) DEVICE_ID="6" ;;
   pico-plus) DEVICE_ID="7" ;;
