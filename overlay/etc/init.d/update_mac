@@ -5,8 +5,8 @@ depend() {
     need procfs
     need sysfs
     need localmount
+    need sshd
     before networking
-    before sshd
 }
 
 INTERFACE="eth0"
