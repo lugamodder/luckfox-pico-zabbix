@@ -15,7 +15,8 @@ start() {
     ebegin "Setting MAC address for $INTERFACE"
 
         SERIAL_NUMBER=$(tr -d '\0' </proc/device-tree/serial-number)
-        MAC_ADDRESS=$(echo -n "$SERIAL_NUMBER" | md5sum | sed 's/^\(..\)\(..\)\(..\)\(..\)\(..\).*$/02:\1:\2:\3:\4:\5/')
+        UUID=$(blkid | grep "/dev/ubi0_0" | awk -F'"' '{print $2}')
+        MAC_ADDRESS=$(echo -n "$SERIAL_NUMBER$UUID" | md5sum | sed 's/^\(..\)\(..\)\(..\)\(..\)\(..\).*$/02:\1:\2:\3:\4:\5/')
         INTERFACES_FILE="/etc/network/interfaces"
         LOG_MESSAGE="Setting MAC address $MAC_ADDRESS for interface $INTERFACE"
 
