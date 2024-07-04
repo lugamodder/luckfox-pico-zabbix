@@ -27,7 +27,7 @@ jobs:
   build-system:
     strategy:
       matrix:
-        device: [ pico-pro-max, pico-plus ]
+        device: [ pico-pro-max ]
     # runs-on: "cirun-aws-amd64--${{ github.run_id }}"
     runs-on: [self-hosted, linux, x64]
     #runs-on: ubuntu-24.04
