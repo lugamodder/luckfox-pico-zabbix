@@ -50,7 +50,7 @@ apk add busybox-extras
 
 apk add nano
 apk add mc
-apk add lm-sensors
+#apk add lm-sensors
 
 
 setup-ntp chrony
